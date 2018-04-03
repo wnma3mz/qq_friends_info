@@ -8,4 +8,24 @@
 
 2. 基于qzonetoken, cookie等信息，获取所有qq好友的个人资料（包括相识天数）
 
-还有很多功能正在开发中……
+### 操作示范
+
+`test/test.py`
+
+### 注意事项
+
+如果请求好友资料次数过多(`GetInfo`), 会导致QQ短暂被封
+
+### 使用到的QQ接口
+
+获取好友列表的url: `http://qun.qq.com/cgi-bin/qun_mgr/get_friend_list`
+
+获取加为好友的时间戳: `https://mobile.qzone.qq.com/friendship/get_friendship`
+
+获取好友个人资料（前提是好友给予了权限）: `https://mobile.qzone.qq.com/profile_get`
+
+### TO-DO
+
+- [] 增加代码注释
+
+- [] 增加模拟登陆

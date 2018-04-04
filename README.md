@@ -10,7 +10,7 @@
 
 ### 操作示范
 
-`test/test.py`
+[test/test.py](https://github.com/wnma3mz/qq_friends_info/blob/master/test/test.py)
 
 ### 注意事项
 
@@ -25,7 +25,5 @@
 获取好友个人资料（前提是好友给予了权限）: `https://mobile.qzone.qq.com/profile_get`
 
 ### TO-DO
-
-- [ ] 增加代码注释
 
 - [ ] 增加模拟登陆

@@ -5,11 +5,21 @@ import pickle
 
 
 class GetQQNum(object):
+    """获取所有好友的QQ号并保存至本地"""
+
     def __init__(self, bkn, cookie):
         """
         初始化参数
+        Parameters
+        ----------
+        bkn: str
+            请求群管理(http://qun.qq.com/cgi-bin/qun_mgr/get_friend_list)页面的bkn
+        cookie: str
+            请求群管理页面的cookie
 
-
+        Returns
+        -------
+        None
         """
 
         self.bkn = bkn
@@ -19,10 +29,20 @@ class GetQQNum(object):
     def __get_uin_lst(self):
         """
         获取qq好友qq号(uin)和对应备注(name), 保存在mem_lst中
-        [{'name': 'aaa', 'uin': 123456},
-        {'name': 'bbb', 'uin': 12030},
-        {'name': 'ccc', 'uin': 303},
-        {'name': 'ddd', 'uin': 341}]
+        Parameters
+        ----------
+        None
+            
+        Returns
+        -------
+        list:
+            [
+                {'name': 'aaa', 'uin': 123456},
+                {'name': 'bbb', 'uin': 12030},
+                {'name': 'ccc', 'uin': 303},
+                {'name': 'ddd', 'uin': 341}
+            ]
+        好友备注名和qq号
         """
 
         # 请求的url
@@ -37,18 +57,18 @@ class GetQQNum(object):
         }
         response = requests.post(url, data=payload, headers=headers).json()
 
-        # 如果参数正确应该能够获取到相应的信息
+        # 如果参数正确应该能够获取到每个分组下的所有好友的信息
         try:
             friends_json = response["result"]
         except Exception:
             raise TypeError("Please input correct params")
 
-        # 获取每个分组，可能存在分组为空的情况
-
+        # 遍历每个分组，排除分组为空的情况
         for key in friends_json.keys():
             if not friends_json.get(key, 0):
                 del friends_json[key]
 
+        # 取出每个分组中的成员信息
         mem_lst = [
             friend for key, friend_value in friends_json.items()
             for friend in friend_value["mems"]
@@ -59,6 +79,14 @@ class GetQQNum(object):
     def save_data(self, fname):
         """
         保存信息到本地
+        Parameters
+        ----------
+        fname: str
+            保存的文件名
+
+        Returns
+        -------
+        None
         """
         with open(fname, "wb+") as f:
             pickle.dump(self.mem_lst, f)

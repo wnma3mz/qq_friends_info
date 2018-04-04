@@ -4,7 +4,7 @@
 
 目前实现的功能有：
 
-1. 基于bkn, cookie获取所有的qq好友的qq号和备注名
+1. 基于bkn, cookie获取所有的qq好友的qq号和备注名，并保存数据到本地
 
 2. 基于qzonetoken, cookie等信息，获取所有qq好友的个人资料（包括相识天数）
 

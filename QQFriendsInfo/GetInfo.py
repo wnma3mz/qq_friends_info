@@ -6,7 +6,7 @@ from datetime import datetime
 
 
 class GetInfo(object):
-    """登陆qq空间获取qq好友资料和加为好友的时间"""
+    """登陆移动端qq空间获取qq好友资料和加为好友的时间"""
 
     def __init__(self, qzonetoken, sid, g_tk, myuin):
         """

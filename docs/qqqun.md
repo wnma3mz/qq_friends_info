@@ -8,11 +8,24 @@
 
 ![qunqq.png](https://raw.githubusercontent.com/wnma3mz/qq_friends_info/master/imgs/qunqq.png)
 
-### 获取qzonetoken, sid, g_tk, cookie2
+- 移动端版本: 
 
-1. 登陆[手机QQ版空间](https://mobile.qzone.qq.com/)
-2. 同上操作，获取如下图所示的参数，注: 这里获取到的cookie是cookie2; sid不知道为什么有时候获取不到，可以多刷新几次试试，甚至退出重新登陆
+    ### 获取qzonetoken, sid, g_tk, cookie2
 
-![qzoneqq.png](https://raw.githubusercontent.com/wnma3mz/qq_friends_info/master/imgs/qzone_one.png)
+    1. 登陆[手机QQ版空间](https://mobile.qzone.qq.com/)
+    2. 同上操作，获取如下图所示的参数，注: 这里获取到的cookie是cookie2; sid不知道为什么有时候获取不到，可以多刷新几次试试，甚至退出重新登陆
 
-myuin指的是自己的QQ号
+    ![qzone_one.png](https://raw.githubusercontent.com/wnma3mz/qq_friends_info/master/imgs/qzone_one.png)
+
+    myuin指的是自己的QQ号
+
+- PC端版本:
+
+    ### 获取qzonetoken, g_tk, cookie2
+
+    1. 登陆[PC端QQ版空间](https://i.qq.com/)
+    2. 同上操作，获取如下图所示的参数，注: 这里获取到的cookie是cookie2
+
+    ![qzone_two.png](https://raw.githubusercontent.com/wnma3mz/qq_friends_info/master/imgs/qzone_two.png)
+
+    myuin指的是自己的QQ号

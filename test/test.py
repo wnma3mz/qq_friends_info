@@ -1,5 +1,5 @@
 # coding: utf-8
-from QQFriendsInfo import GetQQNum, GetInfo
+from QQFriendsInfo import GetQQNum, GetInfo, GetInfoPC
 import pickle
 
 if __name__ == "__main__":
@@ -18,6 +18,8 @@ if __name__ == "__main__":
     with open("mem_lst.pkl", "rb") as f:
         mem_lst = pickle.load(f)
 
+    """
+    请求移动端版本，由于sid可能获取不到，推荐使用PC端版本
     qzonetoken = ""
     sid = ""
     g_tk = ""
@@ -33,5 +35,21 @@ if __name__ == "__main__":
         # 根据每个好友的QQ号和Cookie
         profile_data = mem_info.get_friend_profile(
             cookie=cookie2, friend_uin=friend["uin"])
+        friend["profile_data"] = profile_data
+        lst.append(friend)
+    """
+    qzonetoken = ""
+    g_tk = ""
+    # 本人的QQ号
+    myuin = "12345"
+    cookie2 = ""
+    # 实例化对象
+    mem_info = GetInfoPC(qzonetoken=qzonetoken, cookie=cookie2, g_tk=g_tk, myuin=myuin)
+
+    lst = []
+    # 获取每个好友的资料（前提是对应有权限）, 这里如果请求次数过多，可能会被封一段时间（两个小时）
+    for friend in mem_lst:
+        # 根据每个好友的QQ号和Cookie
+        profile_data = mem_info.get_friend_profile(friend_uin=friend["uin"])
         friend["profile_data"] = profile_data
         lst.append(friend)

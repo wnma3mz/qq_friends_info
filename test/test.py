@@ -7,9 +7,8 @@ if __name__ == "__main__":
     获取所有QQ好友的QQ号信息, name是备注， uin是好友的QQ号
     [{'name': 'xxx', 'uin': 12345}]
     """
-    bkn = ""
     cookie = ""
-    mem_lst = GetQQNum(bkn=bkn, cookie=cookie)
+    mem_lst = GetQQNum(cookie=cookie)
     fname = "mem_lst.pkl"
     # 存储数据
     mem_lst.save_data(fname)

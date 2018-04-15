@@ -2,12 +2,13 @@
 
 import requests
 import pickle
+import re
 
 
 class GetQQNum(object):
     """获取所有好友的QQ号并保存至本地"""
 
-    def __init__(self, bkn, cookie):
+    def __init__(self, cookie):
         """
         初始化参数
         Parameters
@@ -22,9 +23,26 @@ class GetQQNum(object):
         None
         """
 
-        self.bkn = bkn
+        # self.bkn = bkn
         self.cookie = cookie
+        self.bkn = self.__get_bkn()
         self.mem_lst = self.__get_uin_lst()
+
+    def __get_bkn(self):
+
+        try:
+            skey = re.findall(r"skey.+?;", self.cookie)[0]
+            skey = skey.split("=")[-1][:-1]
+        except Exception as e:
+            raise TypeError("please input correct cookie")
+
+        n = 5381
+        e = 0
+        o = len(skey)
+        while (o > e):
+            n += (n << 5) + ord(skey[e])
+            e += 1
+        return 2147483647 & n
 
     def __get_uin_lst(self):
         """
